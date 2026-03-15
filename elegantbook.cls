@@ -34,7 +34,6 @@
 \DeclareVoidOption{blue}{\ekv{color=blue}}
 \DeclareVoidOption{gray}{\ekv{color=gray}}
 \DeclareVoidOption{black}{\ekv{color=black}}
-\DeclareVoidOption{purple}{\ekv{color=purple}}
 \DeclareVoidOption{nocolor}{\ekv{color=none}}
 
 \DeclareVoidOption{chinese}{\ekv{scheme=chinese}}
@@ -268,12 +267,6 @@
   \definecolor{second}{RGB}{230,90,7}%
   \definecolor{third}{RGB}{0,160,152}%
 }{\relax}
-\ifdefstring{\ELEGANT@color}{purple}{
-  \definecolor{structurecolor}{RGB}{102, 0, 153} % 深紫
-  \definecolor{main}{RGB}{123, 31, 162}          % 主色调紫
-  \definecolor{second}{RGB}{186, 104, 200}       % 次要浅紫
-  \definecolor{third}{RGB}{156, 39, 176}         % 辅助紫
-}{\relax}
 \ifdefstring{\ELEGANT@color}{cyan}{
   \definecolor{structurecolor}{RGB}{31,186,190}%
   \definecolor{main}{RGB}{59,180,5}%
@@ -304,11 +297,6 @@
 \definecolor{main1}{RGB}{0,120,2}%
 \definecolor{second1}{RGB}{230,90,7}%
 \definecolor{third1}{RGB}{0,160,152}%
-% 紫色主题的备用色
-\definecolor{structure1}{RGB}{102,0,153}   % 深紫
-\definecolor{main1}{RGB}{123,31,162}       % 主紫
-\definecolor{second1}{RGB}{186,104,200}    % 浅紫
-\definecolor{third1}{RGB}{156,39,176}      % 辅助紫
 %cyan color
 \definecolor{structure2}{RGB}{31,186,190}%
 \definecolor{main2}{RGB}{59,180,5}%
@@ -334,8 +322,8 @@
 \definecolor{winered}{rgb}{0.5,0,0}
 \definecolor{bule}{RGB}{18,29,57}
 \colorlet{coverlinecolor}{second}
-
-
+%东邪的tip框
+\definecolor{dxtips}{RGB}{128,0,128} % 紫色 (你也可以改成自己喜欢的RGB值)
 % ----- Title Style -----
 \ifdefstring{\ELEGANT@titlestyle}{hang}{\def\style{hang}}{\relax}
 \ifdefstring{\ELEGANT@titlestyle}{display}{\def\style{display}}{\relax}
@@ -423,8 +411,8 @@
   \newcommand{\notename}{笔记}
   \renewcommand*{\proofname}{证明}
   \newcommand{\definitionname}{定义}
-  \newcommand{\dxtipname}{东邪的tip}
   \newcommand{\theoremname}{定理}
+  \newcommand{\dxtipsname}{东邪的 tip} % 用这个名字，后面环境要用它
   \newcommand{\axiomname}{公理}
   \newcommand{\postulatename}{公设}
   \newcommand{\lemmaname}{引理}
@@ -448,375 +436,7 @@
 }{\relax}
 
 
-\ifdefstring{\ELEGANT@lang}{en}{
-  \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figure}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Table}~\ref{#1}}
-  \renewcommand{\chaptername}{Chapter}
-  \renewcommand{\partname}{\color{structurecolor} Part}
-  \newcommand{\authorname}{\textbf{Author: }}
-  \newcommand{\institutename}{\textbf{Institute: }}
-  \newcommand{\datename}{\textbf{Date: }}
-  \newcommand{\versionname}{\textbf{Version: }}
-  \newcommand{\notename}{Note}
-  \newcommand{\proofname}{Proof}
-  \newcommand{\problemname}{Problem}
-  \newcommand{\definitionname}{Definition}
-  \newcommand{\theoremname}{Theorem}
-  \newcommand{\axiomname}{Axiom}
-  \newcommand{\postulatename}{Postulate}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Proposition}
-  \newcommand{\corollaryname}{Corollary}
-  \newcommand{\examplename}{Example}
-  \newcommand{\exercisename}{Exercise}
-  \newcommand{\remarkname}{Remark}
-  \newcommand{\assumptionname}{Assumption}
-  \newcommand{\conclusionname}{Conclusion}
-  \newcommand{\solutionname}{Solution}
-  \newcommand{\propertyname}{Property}
-  \newcommand{\introductionname}{Introduction}
-  \renewcommand{\appendixname}{Appendix}
-  \newcommand{\ebibname}{Bibliography}
-  % \newcommand{\problemsetname}{Exercise}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Updates:}
-  \newcommand{\historyname}{Version History}
-}{\relax}
 
-\ifdefstring{\ELEGANT@lang}{it}{
-  % \RequirePackage[utf8]{inputenc}
-  \RequirePackage[italian]{babel}
-  % \RequirePackage[T1]{fontenc}
-  \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figura}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabella}~\ref{#1}}
-  \renewcommand{\chaptername}{Chapter}
-  \newcommand{\authorname}{\textbf{Autore: }}
-  \newcommand{\institutename}{\textbf{Istituto: }}
-  \newcommand{\datename}{\textbf{Data: }}
-  \newcommand{\versionname}{\textbf{Versione: }}
-  \newcommand{\notename}{Nota}
-  \newcommand{\proofname}{Dimostrazione}
-  \newcommand{\problemname}{Problema}
-  \newcommand{\definitionname}{Definizione}
-  \newcommand{\theoremname}{Teorema}
-  \newcommand{\axiomname}{Assioma}
-  \newcommand{\postulatename}{Postulato}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Proposizione}
-  \newcommand{\corollaryname}{Corollario}
-  \newcommand{\examplename}{Esempio}
-  \newcommand{\exercisename}{Esercizio}
-  \newcommand{\remarkname}{Commento}
-  \newcommand{\assumptionname}{Assunto}
-  \newcommand{\conclusionname}{Conclusione}
-  \newcommand{\solutionname}{Soluzione}
-  \newcommand{\propertyname}{Proprietà}
-  \newcommand{\introductionname}{Introduzione}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Aggiornamenti:}
-  \newcommand{\ebibname}{Bibliografia}
-  \newcommand{\historyname}{Cronologia delle versioni}
-}{\relax}
-
-\ifdefstring{\ELEGANT@lang}{fr}{
-  \RequirePackage[utf8]{inputenc}
-  \RequirePackage[T1]{fontenc}
-  \RequirePackage[french]{babel}
-  \setlength\parindent{2em}
-  \renewcommand\figref[1]{\textbf{Figure}\ref{#1}}
-  \renewcommand\tabref[1]{\textbf{Tableau}\ref{#1}}
-  \renewcommand{\chaptername}{Chapitre}
-  \renewcommand{\authorname}{\textbf{Auteur: }}
-  \renewcommand{\institutename}{\textbf{Institut: }}
-  \renewcommand{\datename}{\textbf{Date: }}
-  \renewcommand{\versionname}{\textbf{Version: }}
-  \renewcommand{\notename}{Note}
-  \renewcommand{\proofname}{Démonstration}
-  \renewcommand{\problemname}{Problème}
-  \renewcommand{\definitionname}{Définition}
-  \renewcommand{\theoremname}{Théorème}
-  \renewcommand{\axiomname}{Axiôme}
-  \renewcommand{\postulatename}{Postulat}
-  \renewcommand{\lemmaname}{Lemme}
-  \renewcommand{\propositionname}{Proposition}
-  \renewcommand{\corollaryname}{Corollaire}
-  \renewcommand{\examplename}{Exemple}
-  \renewcommand{\exercisename}{Exercice}
-  \renewcommand{\remarkname}{Remarque}
-  \renewcommand{\assumptionname}{Supposition}
-  \renewcommand{\conclusionname}{Conclusion}
-  \renewcommand{\solutionname}{Solution}
-  \renewcommand{\propertyname}{Propriété}
-  \renewcommand{\introductionname}{Introduction}
-  \renewcommand{\problemsetname}{Exercice}
-  \renewcommand{\updatename}{Mises à jour:}
-  \newcommand{\ebibname}{Bibliographie}
-  \renewcommand{\historyname}{Historique des versions}
-}{\relax}
-
-
-\ifdefstring{\ELEGANT@lang}{nl}{
-  \RequirePackage[dutch]{babel}
-  \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figuur}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabel}~\ref{#1}}
-  \renewcommand{\chaptername}{Hoofdstuk}
-  \newcommand{\authorname}{\textbf{Auteur: }}
-  \newcommand{\institutename}{\textbf{Instituut: }}
-  \newcommand{\datename}{\textbf{Datum: }}
-  \newcommand{\versionname}{\textbf{Versie: }}
-  \newcommand{\notename}{Opmerking}
-  \newcommand{\proofname}{Bewijs}
-  \newcommand{\problemname}{Probleem}
-  \newcommand{\definitionname}{Definitie}
-  \newcommand{\theoremname}{Stelling}
-  \newcommand{\axiomname}{Uitgangspunt}
-  \newcommand{\postulatename}{Hypothese}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Voorstel}
-  \newcommand{\corollaryname}{Gevolgtrekking}
-  \newcommand{\examplename}{Voorbeeld}
-  \newcommand{\exercisename}{Oefening}
-  \newcommand{\remarkname}{Commentaar}
-  \newcommand{\assumptionname}{Veronderstelling}
-  \newcommand{\conclusionname}{Besluit}
-  \newcommand{\solutionname}{Oplossing}
-  \newcommand{\propertyname}{Eigenschap}
-  \newcommand{\introductionname}{Introductie}
-  \newcommand{\problemsetname}{Probleemcomplex}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Update:}
-  \newcommand{\ebibname}{Bibliographie}
-  \newcommand{\historyname}{Versie Geschiedenis}
-}{\relax}
-
-
-\ifdefstring{\ELEGANT@lang}{hu}{
-  \RequirePackage[magyar]{babel}
-  \setlength\parindent{2em}
-  \newcommand\figref[1]{\ref{#1}~\textbf{Ábra}}
-  \newcommand\tabref[1]{\ref{#1}~\textbf{Táblázat}}
-  \renewcommand{\chaptername}{Fejezet}
-  \newcommand{\authorname}{\textbf{Szerző: }}
-  \newcommand{\institutename}{\textbf{Intézmény: }}
-  \newcommand{\datename}{\textbf{Dátum: }}
-  \newcommand{\versionname}{\textbf{Verziószám: }}
-  \newcommand{\notename}{Jegyzet}
-  \newcommand{\proofname}{Bizonyítás}
-  \newcommand{\problemname}{Probléma}
-  \newcommand{\definitionname}{Definíció}
-  \newcommand{\theoremname}{Tétel}
-  \newcommand{\axiomname}{Axióma}
-  \newcommand{\postulatename}{Követelmény}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Előzmény}
-  \newcommand{\corollaryname}{Következmény}
-  \newcommand{\examplename}{Példa}
-  \newcommand{\exercisename}{Feladat}
-  \newcommand{\remarkname}{Megjegyzés}
-  \newcommand{\assumptionname}{Sejtés}
-  \newcommand{\conclusionname}{Összefoglalás}
-  \newcommand{\solutionname}{Megoldás}
-  \newcommand{\propertyname}{Tulajdonság}
-  \newcommand{\introductionname}{Bevezetés}
-  \newcommand{\problemsetname}{Feladatok}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Frissítve:}
-  \newcommand{\ebibname}{Bibliográfia}
-  \newcommand{\historyname}{Korábbi verziók}
-}{\relax}
-
-\ifdefstring{\ELEGANT@lang}{de}{
-  \setlength\parindent{2em}
-  \renewcommand{\contentsname}{Inhaltsverzeichnis}
-  \newcommand\figref[1]{\textbf{Figur}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabelle}~\ref{#1}}
-  \renewcommand{\partname}{\color{structurecolor} Teil}
-  \renewcommand{\listfigurename}{Abbildungsverzeichnis}
-  \renewcommand{\listtablename}{Tabellenverzeichnis}
-  \renewcommand{\bibname}{Bibliographie}
-  \renewcommand{\appendixname}{Anhang}
-  \renewcommand{\chaptername}{Kapitel}
-  \newcommand{\authorname}{\textbf{Autor: }}
-  \newcommand{\institutename}{\textbf{Institut: }}
-  \newcommand{\datename}{\textbf{Datum: }}
-  \newcommand{\versionname}{\textbf{Version: }}
-  \newcommand{\notename}{Notiz}
-  \newcommand{\proofname}{Beweis}
-  \newcommand{\problemname}{Problem}
-  \newcommand{\definitionname}{Definition}
-  \newcommand{\theoremname}{Theorem}
-  \newcommand{\axiomname}{Axiom}
-  \newcommand{\postulatename}{Postulat}
-  \newcommand{\lemmaname}{Lemma}
-  \newcommand{\propositionname}{Behauptung}
-  \newcommand{\corollaryname}{Corollary}
-  \newcommand{\examplename}{Beispiel}
-  \newcommand{\instancename}{Beispiel} %
-  \newcommand{\exercisename}{\"{U}bung}
-  \newcommand{\remarkname}{Anmerkung}
-  \newcommand{\assumptionname}{Annahme}
-  \newcommand{\conclusionname}{Abschluss}
-  \newcommand{\solutionname}{Aufl\"{o}sung}
-  \newcommand{\propertyname}{Property}
-  \newcommand{\introductionname}{Einleitung}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Updates:}
-  \renewcommand{\ebibname}{Bibliographie}
-  \newcommand{\historyname}{Version der Geschichte}
-}{\relax}
-
-\ifdefstring{\ELEGANT@lang}{es}{
-  \RequirePackage[spanish]{babel}
-  \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figura}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabla}~\ref{#1}}
-  \renewcommand{\spanishchaptername}{Capítulo}
-  \newcommand{\authorname}{\textbf{Autor: }}
-  \newcommand{\institutename}{\textbf{Instituto: }}
-  \newcommand{\datename}{\textbf{Fecha: }}
-  \newcommand{\versionname}{\textbf{Versión: }}
-  \newcommand{\notename}{Nota}
-  \newcommand{\proofname}{Demostración}
-  \newcommand{\problemname}{Problema}
-  \newcommand{\definitionname}{Definición}
-  \newcommand{\theoremname}{Teorema}
-  \newcommand{\axiomname}{Axioma}
-  \newcommand{\postulatename}{Postulado}
-  \newcommand{\lemmaname}{Lema}
-  \newcommand{\propositionname}{Proposición}
-  \newcommand{\corollaryname}{Corolario}
-  \newcommand{\examplename}{Ejemplo}
-  \newcommand{\exercisename}{Ejercicio}
-  \newcommand{\remarkname}{Comentario}
-  \newcommand{\assumptionname}{Asunto}
-  \newcommand{\conclusionname}{Conclusión}
-  \newcommand{\solutionname}{Solución}
-  \newcommand{\propertyname}{Propiedad}
-  \newcommand{\introductionname}{Introducción}
-  \newcommand{\problemsetname}{Ejercicio}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Actualización:}
-  \newcommand{\ebibname}{Bibliografía}
-  \newcommand{\historyname}{Historial de versiones}
-}{\relax}
-
-\ifdefstring{\ELEGANT@lang}{mn}{
-  \RequirePackage[mongolian]{babel}
-  \RequirePackage[utf8]{inputenc}
-  \RequirePackage[T2A]{fontenc}
-  \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Зураг}\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Хүснэгт}\ref{#1}}
-  \renewcommand{\chaptername}{Бүлэг}
-  \newcommand{\authorname}{\textbf{Зохиогч: }}
-  \newcommand{\institutename}{\textbf{Сургууль: }}
-  \newcommand{\datename}{\textbf{Огноо: }}
-  \newcommand{\versionname}{\textbf{Хувилбар: }}
-  \newcommand{\notename}{Тэмдэглэл}
-  \newcommand{\proofname}{Баталгаа}
-  \newcommand{\problemname}{Бодлого}
-  \newcommand{\definitionname}{Тодорхойлолт}
-  \newcommand{\theoremname}{Томьёо}
-  \newcommand{\axiomname}{Аксиом}
-  \newcommand{\postulatename}{Постулат}
-  \newcommand{\lemmaname}{Лемма}
-  \newcommand{\propositionname}{Таамаглал}
-  \newcommand{\corollaryname}{Үр дүн}
-  \newcommand{\examplename}{Жишээ}
-  \newcommand{\exercisename}{Дасгал}
-  \newcommand{\remarkname}{Тайлбар}
-  \newcommand{\assumptionname}{Урьдчилсан нөхцөл}
-  \newcommand{\conclusionname}{Дүгнэлт}
-  \newcommand{\solutionname}{Хариулт}
-  \newcommand{\propertyname}{Шинж чанар}
-  \newcommand{\introductionname}{Удиртгал}
-  \newcommand{\problemsetname}{Бодлогууд}
-  \newcommand\bioinfo[2]{\gdef@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Шинэчлэлтүүд:}
-  \newcommand{\ebibname}{Ном зүй}
-  \newcommand{\historyname}{Хувилбарын түүх}
-}{\relax}
-
-
-\ifdefstring{\ELEGANT@lang}{pt}{
-  \RequirePackage[portuguese]{babel}
-  \setlength\parindent{2em}
-  \newcommand\figref[1]{\textbf{Figura}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{Tabela}~\ref{#1}}
-  \renewcommand{\chaptername}{Capítulo}
-  \newcommand{\authorname}{\textbf{Autor: }}
-  \newcommand{\institutename}{\textbf{Instituição: }}
-  \newcommand{\datename}{\textbf{Data: }}
-  \newcommand{\versionname}{\textbf{Versão: }}
-  \newcommand{\notename}{Observação}
-  \newcommand{\proofname}{Demostração}
-  \newcommand{\problemname}{Problema}
-  \newcommand{\definitionname}{Definição}
-  \newcommand{\theoremname}{Teorema}
-  \newcommand{\axiomname}{Axioma}
-  \newcommand{\postulatename}{Postulado}
-  \newcommand{\lemmaname}{Lema}
-  \newcommand{\propositionname}{Proposição}
-  \newcommand{\corollaryname}{Corolário}
-  \newcommand{\examplename}{Exemplo}
-  \newcommand{\exercisename}{Exercício}
-  \newcommand{\remarkname}{Comentário}
-  \newcommand{\assumptionname}{Assunto}
-  \newcommand{\conclusionname}{Conclusão}
-  \newcommand{\solutionname}{Soluções}
-  \newcommand{\propertyname}{Propiedade}
-  \newcommand{\introductionname}{Introdução}
-  \newcommand{\problemsetname}{Questão}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{Atualização: }
-  \newcommand{\ebibname}{Bibliografia}
-  \newcommand{\historyname}{Histórico de versões}
-}{\relax}
-
-
-\ifdefstring{\ELEGANT@lang}{jp}{
- \RequirePackage{luatexja}
-  \setlength\parindent{2em}
-  \renewcommand{\contentsname}{目次}
-  \newcommand\figref[1]{\textbf{図}~\ref{#1}}
-  \newcommand\tabref[1]{\textbf{表}~\ref{#1}}
-  \renewcommand{\partname}{\color{structurecolor}}
-  \renewcommand{\listfigurename}{イラストカタログ}
-  \renewcommand{\listtablename}{表カタログ}
-  \renewcommand{\bibname}{参考文献}
-  \renewcommand{\appendixname}{付録}
-  \renewcommand{\chaptername}{第 \thechapter 章}
-  \newcommand{\authorname}{\textbf{著者：}}
-  \newcommand{\institutename}{\textbf{組織団体：}}
-  \newcommand{\datename}{\textbf{日付：}}
-  \newcommand{\versionname}{\textbf{\citshape バージョン：}}
-  \newcommand{\notename}{ノート}
-  \newcommand{\proofname}{証明}
-  \newcommand{\problemname}{問題}
-  \newcommand{\definitionname}{定義}
-  \newcommand{\theoremname}{定理}
-  \newcommand{\axiomname}{公理}
-  \newcommand{\postulatename}{公準}
-  \newcommand{\lemmaname}{補題}
-  \newcommand{\propositionname}{命題}
-  \newcommand{\corollaryname}{系}
-  \newcommand{\examplename}{例題}
-  \newcommand{\instancename}{例}
-  \newcommand{\exercisename}{練習}
-  \newcommand{\remarkname}{注}
-  \newcommand{\assumptionname}{仮設}
-  \newcommand{\conclusionname}{結論}
-  \newcommand{\solutionname}{解答}
-  \newcommand{\propertyname}{性質}
-  \newcommand{\introductionname}{内容概要}
-  \newcommand\bioinfo[2]{\gdef\@bioinfo{\textbf{#1}: #2}}
-  \newcommand{\updatename}{更新：}
-  \newcommand{\ebibname}{参考文献}
-  \newcommand{\historyname}{バージョン更新履歴}
-}{\relax}
 
 
 \graphicspath{{./figure/}{./figures/}{./image/}{./images/}{./graphics/}{./graphic/}{./pictures/}{./picture/}}
@@ -903,6 +523,15 @@
       overlay unbroken and last={
         \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
           \textcolor{main}{$\clubsuit$}};}},
+    dxstyle/.style={
+       common,
+       colframe=dxtips,        % 边框紫
+       colback=dxtips!5,       % 背景浅紫
+       colbacktitle=dxtips,    % 标题底色紫
+       overlay unbroken and last={
+          \node[anchor=south east, outer sep=0pt] at (\linewidth-width,0) {
+            \textcolor{dxtips}{$\diamondsuit$}};} % 右下角小符号，可改
+             },      
     thmstyle/.style={
       common,
       colframe=second,  
@@ -930,20 +559,23 @@
           {title=\definitionname~\thetcbcounter}
       },
     IfBooleanTF={#3}{label=#4}{label={def:#4}}}
-    %我自己的框
-    \DeclareTColorBox[auto counter,number within=\ELEGANT@thmcnt]{dxtip}{ g o t\label g }{
-    common,dxstyle,
-    IfValueTF={#1}
-      {title={\dxtipname~\thetcbcounter\ (#1)}}
-      {
-        IfValueTF={#2}
-          {title={\dxtipname~\thetcbcounter\ (#2)}}
-          {title=\dxtipname~\thetcbcounter}
-      },
-    IfBooleanTF={#3}{label=#4}{label={dxtip:#4}}}
-
-
   % \newtcbtheorem[auto counter,number within=chapter]{theorem}{\theoremname}{thmstyle}{thm}
+  % 4) 环境（与 lemma 的 DeclareTColorBox 模板一致）
+  \DeclareTColorBox[auto counter,number within=\ELEGANT@thmcnt]{dxtips}{ g o t\label g }{%
+  common,        % 用 ElegantBook 的通用盒子参数（和 lemma 一样）
+  colframe=dxtips,
+  colback=dxtips!5,
+  colbacktitle=dxtips,
+  fonttitle=\bfseries\color{white}, % 标题白字更清晰；不需要可删
+  IfValueTF={#1}
+    {title={\dxtipsname~\thetcbcounter\ (#1)}}
+    {%
+      IfValueTF={#2}
+        {title={\dxtipsname~\thetcbcounter\ (#2)}}
+        {title=\dxtipsname~\thetcbcounter}%
+    },
+  IfBooleanTF={#3}{label=#4}{label={dx:#4}}%
+   }
   \DeclareTColorBox[auto counter,number within=\ELEGANT@thmcnt]{theorem}{ g o t\label g }{
     common,thmstyle,
     IfValueTF={#1}
@@ -1034,6 +666,11 @@
   \theoremstyle{thmstyle} %theorem style
   \newtheorem{theorem}{\theoremname}[\ELEGANT@thmcnt]
   \newtheorem{lemma}{\lemmaname}[\ELEGANT@thmcnt]
+  \newtheoremstyle{dxstyle}{3pt}{3pt}{\citshape}{-3pt}%
+  {\bfseries\color{dxtips}}{}{0.5em}{\thmname{#1} \thmnumber{#2} \thmnote{(#3)}}
+
+   \theoremstyle{dxstyle}
+   \newtheorem{dxtips}{\dxtipsname}[\ELEGANT@thmcnt]
   \newtheorem{corollary}{\corollaryname}[\ELEGANT@thmcnt]
   \newtheorem{postulate}{\postulatename}[\ELEGANT@thmcnt]
   \newtheorem{axiom}{\axiomname}[\ELEGANT@thmcnt]
