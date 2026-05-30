@@ -1,44 +1,36 @@
-# dx 的实变函数
+# dx's Real Analysis
 
-## 序
+## Preface
 
-这是我很珍惜的一本书。
+This is a book I care about deeply. It is not only a course notebook, but also my first serious attempt to retell a mathematics course according to how I actually understood it.
 
-它不只是一本课程笔记，更像是我第一次认真把一门数学课，按照自己真正理解它的方式，重新讲一遍。`main.tex` 里写着一句话: “实变函数这门课程让我学会了另一种积分的方式，对集合的理解越发深刻。”现在回头看，我觉得这句话说得很准。实变函数教给我的，并不只是 Lebesgue 积分、可测函数和零测集这些名词，而是一种新的看问题的方法: 你开始习惯去问，一个对象到底活在什么集合里，一个极限到底是对谁取的，一个结论成立到底靠的是代数运算，还是靠测度结构。
+Real analysis taught me another way to integrate and a deeper way to think about sets. It trains us to ask where an object lives, what a limit is being taken over, and whether a conclusion depends on algebraic operations or measure-theoretic structure.
 
-如果说微积分更多是在训练“算”，那么实变函数更像是在训练“组织证明”。很多时候，难点并不在最后几行推导，而在你是否知道第一步该构造什么，第二步该把问题改写成什么形式，第三步又该把“任意”“存在”“可数”“几乎处处”这些词分别落到哪里去。
+## Why This Book Is Written This Way
 
-## 为什么会有这本书
+I did not want real analysis to become a notebook made only of definitions and theorems. The subject can feel difficult because every statement looks correct, but it is not always clear why it appears at that point.
 
-我写这本书的时候，一直不太愿意把它写成一本只剩定义和定理的整理稿。因为实变函数最容易让人失去方向的地方，恰恰不是知识点太少，而是每一个知识点都显得太“正确”了，正确到你不知道它为什么会在这里出现。
+The notes therefore preserve many short construction-oriented tips: when to construct from an arbitrary object, when boundedness plus infinitude suggests a sequence, and how unions and intersections correspond to quantifiers.
 
-所以我保留了很多看起来很短、甚至有点像自言自语的 `dxtips`。像“看任意想构造”“看见有界+无限想构造”“交并集与量词对应”，这些都不是边角料。它们其实是我在这门课里最想留给读者的东西，因为它们比单独记住一个结论更接近真正的数学直觉。
+## What This Book Keeps
 
-我一直觉得，实变函数并不是一门要靠勇气硬撑过去的课。它当然难，但它的难很多时候是“语言上的难”“视角切换上的难”，而不是不可理解的难。只要有人愿意把节奏放慢，把构造意图讲出来，把证明背后的动作说清楚，这门课就会从一堵墙慢慢变成一条路。
+The first chapter builds the language of sets, open and closed sets, countability, and completeness. The second chapter develops measure through outer measure, measurable sets, and nonmeasurable sets. The third and fourth chapters connect measurable functions, simple-function approximation, modes of convergence, and Lebesgue integration.
 
-## 这本书里有什么
+The whole book follows one line: when functions, sets, limits, and integration are placed in a more general framework, scattered tricks become a coherent structure.
 
-这本书大致沿着一条很自然的分析主线往前走。
+## Intended Readers
 
-第一章从集合、开闭性、可数性和完备性开始，不急着进积分，而是先把后面整本书都要用的语言地基搭起来。第二章进入测度，从外测度、可测集到不可测集，开始建立“长度”之外的另一套定量方式。第三章和第四章再把可测函数、简单函数逼近、收敛模式和 Lebesgue 积分连在一起，让“积分”重新变成一件有结构的事情。
+This book is for readers meeting real analysis for the first time and for readers returning to reorganize it. It tries to slow down the proof actions enough for the subject to become a road rather than a wall.
 
-如果你愿意把这本书从头往后读，你会发现它想讲的其实是同一件事: 当我们把函数、集合、极限和积分都放到更一般的框架里之后，很多原本零散的技巧，会变成彼此呼应的结构。
+## Overall Roadmap
 
-## 我想把它写给谁
+Following Sheldon Axler's Measure, Integration & Real Analysis, the measure-theoretic part of real analysis starts from the limitations of Riemann integration and moves toward measure, measurable functions, Lebesgue integration, convergence theorems, and product measures. This repository currently covers set foundations, measure, measurable functions, and Lebesgue integration.
 
-我想把它写给两种读者。
+```
 
-第一种，是第一次学实变函数、正在被新名词淹没的人。如果你常常觉得“每个词我都认识，但一到证明就完全不知道从哪开始”，那这本书很可能就是写给你的。它不会假装这门课很轻松，但它会尽量陪你把每一步都走实。
+## Repository Notes
 
-第二种，是已经学过一遍、想回来重新整理理解的人。第二遍学实变时，最重要的往往不再是记住结论，而是看清哪些证明套路在反复出现，哪些构造是一类题共同的入口，哪些地方其实是在训练你以后学泛函、概率、偏微分方程时还会继续用到的分析习惯。
-
-## 最后
-
-如果这本书最后能让你在看到“任意”时不再只觉得紧张，而是下意识开始想“我该构造什么”；如果它能让你在看到交并号、测度、极限和积分缠在一起的时候，不再第一反应是躲开；如果它能让你慢慢觉得，实变函数不是一堆生硬定义，而是一种越来越清楚的表达方式，那它就已经完成了我最想让它完成的事。
-
-## 仓库说明
-
-- 主文件是 `main.tex`。
-- 正文目前集中在单一主文档中，按章覆盖集合、测度、可测函数与 Lebesgue 积分。
-- 仓库里包含 `video`、`figure` 与若干辅助图片，用于配合正文理解。
-- 若需要本地编译，通常运行 `xelatex main.tex` 两次即可。
+- The main entry is `main.tex`.
+- The body is currently concentrated in one main document covering sets, measure, measurable functions, and Lebesgue integration.
+- Figures, videos, and auxiliary images are kept for use with the text.
+- For local compilation, running `xelatex main.tex` twice is usually enough.
